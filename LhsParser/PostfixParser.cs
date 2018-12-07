@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace LhsParser
 {
-    public class DefaultParser
+    public class PostfixParser : IParser
     {
         public static readonly IReadOnlyDictionary<TokenType, int> TokenOrder = new Dictionary<TokenType, int>
         {
@@ -29,13 +29,13 @@ namespace LhsParser
             {  TokenType.Number, 0 },
             {  TokenType.String, 0 },
         };
-        
+
         /// <summary>
         /// Converts a string statement to the Postfix form. Read more about the algorithm in https://www.geeksforgeeks.org/stack-set-2-infix-to-postfix/
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
-        public IEnumerable<Token> Postfix(string query)
+        public IEnumerable<Token> Parse(string query)
         {
             if (query == null)
             {

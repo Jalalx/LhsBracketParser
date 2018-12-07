@@ -11,9 +11,9 @@ namespace LhsParserTests
         public void Postfix_ForNullValue_ThrowsArgumentNullException()
         {
             string query = null;
-            var parser = new DefaultParser();
+            var parser = new PostfixParser();
 
-            var ex = Record.Exception(() => parser.Postfix(query));
+            var ex = Record.Exception(() => parser.Parse(query));
 
             Assert.NotNull(ex);
             Assert.IsType<ArgumentNullException>(ex);
@@ -44,8 +44,8 @@ namespace LhsParserTests
         [InlineData("(Subject [eq] \"Ticket1\" or CreateDate[lt]2018) and IsNew [eq] true", "Subject\"Ticket1\"[eq]CreateDate2018[lt]orIsNewtrue[eq]and")]
         public void Postfix_ForGivenQuery_ReturnsExpectedValues(string query, string expectedPostfix)
         {
-            var parser = new DefaultParser();
-            var postfixedResult = parser.Postfix(query);
+            var parser = new PostfixParser();
+            var postfixedResult = parser.Parse(query);
             var actualPostfix = string.Join(string.Empty, postfixedResult.Select(x => x.Value).ToArray());
 
             Assert.Equal(expectedPostfix, actualPostfix);

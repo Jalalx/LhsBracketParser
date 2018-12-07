@@ -4,15 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F43E298A-29FE-4053-A060-DA06AB87B733}</ProjectGuid>
+    <ProjectGuid>{3B5066EE-7F0A-44EE-8430-9104ECC10642}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LhsParser</RootNamespace>
-    <AssemblyName>LhsParser</AssemblyName>
+    <RootNamespace>LhsParser.LLBLGenAdapter</RootNamespace>
+    <AssemblyName>LhsParser.LLBLGenAdapter</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="SD.LLBLGen.Pro.ORMSupportClasses, Version=4.2.0.0, Culture=neutral, PublicKeyToken=ca73b74ba4e3ff27, processorArchitecture=MSIL">
+      <HintPath>..\packages\SD.LLBLGen.Pro.ORMSupportClasses.4.2.20160929\lib\net45\SD.LLBLGen.Pro.ORMSupportClasses.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,23 +44,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DefaultDataConverter.cs" />
-    <Compile Include="EvaluatorBase.cs" />
-    <Compile Include="IDataConverter.cs" />
-    <Compile Include="IEvaluator.cs" />
-    <Compile Include="IParser.cs" />
-    <Compile Include="PostfixParser.cs" />
-    <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="InvalidSytaxException.cs" />
-    <Compile Include="OperatorType.cs" />
+    <Compile Include="PredicateExpressionEvaluator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Token.cs" />
-    <Compile Include="TokenExtensions.cs" />
-    <Compile Include="Tokenizer.cs" />
-    <Compile Include="TokenType.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="LhsParser.nuspec" />
+    <ProjectReference Include="..\LhsParser\LhsParser.csproj">
+      <Project>{f43e298a-29fe-4053-a060-da06ab87b733}</Project>
+      <Name>LhsParser</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
