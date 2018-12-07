@@ -6,6 +6,8 @@ This is a simple parser for LHS Bracket syntax.
 
 ### Install from Nuget:
 
+Install [LhsParser Package](https://www.nuget.org/packages/LhsParser/) by running this command in Package Manager Console:
+
     Install-Package LhsParser -Version 1.0.1
 
 #### Why is this created at first place?
@@ -33,3 +35,14 @@ In your application, get filter from query string and apply it to your repositor
         
         /// ...
     }
+
+## Comparing Notation
+
+| Operator 	| Bracket Notation 	|
+|:--------:	|:----------------:	|
+|     =    	|       [eq]       	|
+|    !=    	|       [ne]       	|
+|     >    	|       [gt]       	|
+|    >=    	|       [gte]       |
+|     <    	|       [lt]       	|
+|    <=    	|       [lte]       |
