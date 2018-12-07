@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Text.RegularExpressions;
 namespace LhsParser
 {
 
-    public class Tokenizer : IDisposable
+    public class Tokenizer : IDisposable, IEnumerator<Token>
     {
         private readonly StringReader _reader;
 
@@ -23,6 +24,10 @@ namespace LhsParser
         public char CurrentChar { get; set; }
 
         public int CurrentIndex { get; set; } = -1;
+
+        public Token Current => CurrentToken;
+
+        object IEnumerator.Current => CurrentToken;
 
         private void NextChar()
         {
@@ -228,6 +233,22 @@ namespace LhsParser
         public void Dispose()
         {
             _reader.Dispose();
+        }
+
+        public bool MoveNext()
+        {
+            if (CanRead())
+            {
+                NextToken();
+                return true;
+            }
+
+            return false;
+        }
+
+        public void Reset()
+        {
+            throw new NotSupportedException("LHS Tokenizer doesn't support this operation.");
         }
     }
 }
