@@ -51,5 +51,8 @@
     <Compile Include="Tokenizer.cs" />
     <Compile Include="TokenType.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="LhsParser.nuspec" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

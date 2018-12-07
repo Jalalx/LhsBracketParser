@@ -6,6 +6,7 @@
     <title>LhsParser</title>
     <authors>jalalx</authors>
     <owners>jalalx</owners>
+    <projectUrl>https://github.com/jalalx/lhsparser</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Basic LHS Bracket Parser</description>
     <copyright>Copyright ©  2018</copyright>

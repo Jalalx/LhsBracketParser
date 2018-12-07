@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace LhsParser
 {
@@ -7,7 +9,7 @@ namespace LhsParser
     {
         public static readonly IReadOnlyDictionary<TokenType, int> TokenOrder = new Dictionary<TokenType, int>
         {
-            {  TokenType.ParenthesesOpen, 20 },
+            {  TokenType.ParenthesesOpen, 0 },
             {  TokenType.ParenthesesClose, 0 },
 
             {  TokenType.Equal, 10 },
@@ -17,8 +19,8 @@ namespace LhsParser
             {  TokenType.LessThan, 10 },
             {  TokenType.LessThanOrEqual, 10 },
 
-            {  TokenType.And, 5 },
-            {  TokenType.Or, 1 },
+            {  TokenType.And, 9 },
+            {  TokenType.Or, 8 },
 
             {  TokenType.Boolean, 0 },
             {  TokenType.Date, 0 },
@@ -27,11 +29,24 @@ namespace LhsParser
             {  TokenType.Number, 0 },
             {  TokenType.String, 0 },
         };
-
-        // Read more: http://condor.depaul.edu/ichu/csc415/notes/notes9/Infix.htm
-
+        
+        /// <summary>
+        /// Converts a string statement to the Postfix form. Read more about the algorithm in https://www.geeksforgeeks.org/stack-set-2-infix-to-postfix/
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
         public IEnumerable<Token> Postfix(string query)
         {
+            if (query == null)
+            {
+                throw new ArgumentNullException(nameof(query));
+            }
+
+            if (string.IsNullOrWhiteSpace(query))
+            {
+                return Enumerable.Empty<Token>();
+            }
+
             var operatorStack = new Stack<Token>();
             var operandQueue = new Queue<Token>();
 
@@ -41,44 +56,45 @@ namespace LhsParser
                 while (tokenizer.CanRead())
                 {
                     var currentToken = tokenizer.NextToken();
-                    if (currentToken.IsOperand())
+                    if (currentToken == null)
+                    {
+                        // The rest of string is white space, tabs or new lines.
+                        break;
+                    }
+                    else if (currentToken.IsOperand())
                     {
                         operandQueue.Enqueue(currentToken);
                     }
-                    else if (currentToken.IsOperator() || currentToken.IsParenthesis())
+                    else if (currentToken.Type == TokenType.ParenthesesOpen)
                     {
-                        //  Pop the stack until you find a symbol of lower priority number than the current one.
-                        while (operatorStack.Count > 0)
-                        {
-                            var popedOperator = operatorStack.Pop();
-                            if (TokenOrder[popedOperator.Type] < TokenOrder[currentToken.Type])
-                            {
-                                // The popped stack elements will be written to output. 
-                                operandQueue.Enqueue(popedOperator);
-                            }
-                        }
-
-                        // An incoming left parenthesis will be considered to have higher priority than any 
-                        // other symbol. A left parenthesis on the stack will not be removed unless an incoming right parenthesis is found.
-                        // Stack the current symbol.
                         operatorStack.Push(currentToken);
-
-                        // If a right parenthesis is the current symbol, pop the stack down to (and including) 
-                        // the first left parenthesis. Write all the symbols except the left parenthesis to the output (i.e. write the operators to the output). 
-                        if (currentToken.Type == TokenType.ParenthesesClose)
+                    }
+                    else if (currentToken.Type == TokenType.ParenthesesClose)
+                    {
+                        while (operatorStack.Count > 0 && operatorStack.Peek().Type != TokenType.ParenthesesOpen)
                         {
-                            while (operatorStack.Count > 0)
-                            {
-                                var popedOperator = operatorStack.Pop();
-                                if (popedOperator.Type == TokenType.ParenthesesOpen)
-                                {
-                                    break;
-                                }
-
-                                operandQueue.Enqueue(popedOperator);
-                            }
+                            var popedToken = operatorStack.Pop();
+                            operandQueue.Enqueue(popedToken);
                         }
 
+                        if (operatorStack.Count > 0 && operatorStack.Peek().Type != TokenType.ParenthesesOpen)
+                        {
+                            throw new InvalidSytaxException("There is a right parenthesis ')' that doesn't have any corresponding left parenthesis '('.");
+                        }
+                        else if (operatorStack.Count > 0)
+                        {
+                            operatorStack.Pop();
+                        }
+                    }
+                    else
+                    {
+                        while (operatorStack.Count > 0 && TokenOrder[currentToken.Type] <= TokenOrder[operatorStack.Peek().Type])
+                        {
+                            var popedToken = operatorStack.Pop();
+                            operandQueue.Enqueue(popedToken);
+                        }
+
+                        operatorStack.Push(currentToken);
                     }
                 }
 
@@ -90,7 +106,13 @@ namespace LhsParser
                 }
             }
 
-            return operandQueue;
+            var result = new List<Token>();
+            while (operandQueue.Count > 0)
+            {
+                result.Add(operandQueue.Dequeue());
+            }
+
+            return result;
         }
     }
 }

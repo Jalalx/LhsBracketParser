@@ -136,7 +136,7 @@ namespace LhsParser
                     break;
 
                 default:
-                    throw new InvalidSytaxException($"Invalid char '{CurrentChar}' at index {CurrentIndex}", CurrentIndex);
+                    throw new InvalidSytaxException($"Invalid char '{CurrentChar}' at index {CurrentIndex}");
             }
 
             NextChar();
