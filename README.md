@@ -3,7 +3,7 @@
 This is a simple parser for LHS Bracket syntax.
 
 [![Build status](https://ci.appveyor.com/api/projects/status/ep3y2xobn3wcmoc9/branch/master?svg=true)](https://ci.appveyor.com/project/Jalalx/LhsBracketParser/branch/master)
-
+[![CodeFactor](https://www.codefactor.io/repository/github/jalalx/lhsbracketparser/badge)](https://www.codefactor.io/repository/github/jalalx/lhsbracketparser)
 ### Install from Nuget:
 
 Install [LhsBracketParser Package](https://www.nuget.org/packages/LhsBracketParser/) by running this command in Package Manager Console:
