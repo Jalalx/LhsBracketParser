@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LhsParser.LLBLGenAdapter
+namespace LhsBracketParser.LLBLGenAdapter
 {
     public class PredicateExpressionEvaluator : EvaluatorBase
     {

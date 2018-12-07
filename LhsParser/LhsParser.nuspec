@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
-    <id>LhsParser</id>
+    <id>LhsBracketParser</id>
     <version>1.0.1</version>
-    <title>LhsParser</title>
+    <title>LhsBracketParser</title>
     <authors>jalalx</authors>
     <owners>jalalx</owners>
-    <projectUrl>https://github.com/jalalx/lhsparser</projectUrl>
+    <projectUrl>https://github.com/jalalx/LhsBracketParser</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Basic LHS Bracket Parser</description>
     <copyright>Copyright ©  2018</copyright>

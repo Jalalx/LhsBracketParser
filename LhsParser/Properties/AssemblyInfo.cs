@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("LhsParser")]
+[assembly: AssemblyTitle("LhsBracketParser")]
 [assembly: AssemblyDescription("Simple LHS Bracket Parser")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Septa")]
-[assembly: AssemblyProduct("LhsParser")]
+[assembly: AssemblyProduct("LhsBracketParser")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LhsParser
+namespace LhsBracketParser
 {
 
     public static class TokenExtensions

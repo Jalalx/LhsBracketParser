@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LhsParser
+namespace LhsBracketParser
 {
     public abstract class EvaluatorBase : IEvaluator
     {

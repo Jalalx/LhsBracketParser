@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LhsParser", "LhsParser\LhsParser.csproj", "{F43E298A-29FE-4053-A060-DA06AB87B733}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LhsBracketParser", "LhsParser\LhsBracketParser.csproj", "{F43E298A-29FE-4053-A060-DA06AB87B733}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LhsParserTests", "LhsParserTests\LhsParserTests.csproj", "{526A465A-D1FB-46A7-BB50-CBCDD900E8FF}"
 EndProject

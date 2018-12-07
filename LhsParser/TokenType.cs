@@ -1,4 +1,4 @@
-﻿namespace LhsParser
+﻿namespace LhsBracketParser
 {
 
     public enum TokenType

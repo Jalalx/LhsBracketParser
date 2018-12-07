@@ -48,9 +48,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LhsParser\LhsParser.csproj">
+    <ProjectReference Include="..\LhsParser\LhsBracketParser.csproj">
       <Project>{f43e298a-29fe-4053-a060-da06ab87b733}</Project>
-      <Name>LhsParser</Name>
+      <Name>LhsBracketParser</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace LhsParser
+namespace LhsBracketParser
 {
 
     public class Tokenizer : IDisposable, IEnumerator<Token>

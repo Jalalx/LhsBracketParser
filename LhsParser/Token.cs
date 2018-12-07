@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace LhsParser
+namespace LhsBracketParser
 {
     [DebuggerDisplay("Value={Value}, Type={Type}")]
     public class Token 

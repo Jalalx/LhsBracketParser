@@ -70,9 +70,9 @@
     <Analyzer Include="..\packages\xunit.analyzers.0.10.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LhsParser\LhsParser.csproj">
+    <ProjectReference Include="..\LhsParser\LhsBracketParser.csproj">
       <Project>{f43e298a-29fe-4053-a060-da06ab87b733}</Project>
-      <Name>LhsParser</Name>
+      <Name>LhsBracketParser</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

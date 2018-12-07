@@ -1,9 +1,9 @@
-using LhsParser;
+using LhsBracketParser;
 using System;
 using System.IO;
 using Xunit;
 
-namespace LhsParserTests
+namespace LhsBracketParserTests
 {
     public class TokenizerUnitTests
     {
