@@ -139,6 +139,10 @@ namespace LhsBracketParser
                     CurrentToken = new Token(tokenStr, TokenType.Range);
                     break;
 
+                case "[like]":
+                    CurrentToken = new Token(tokenStr, TokenType.Like);
+                    break;
+
                 default:
                     throw new InvalidSytaxException($"Invalid char '{CurrentChar}' at index {CurrentIndex}");
             }

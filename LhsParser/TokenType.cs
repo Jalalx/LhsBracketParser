@@ -9,6 +9,7 @@
         String,
         Boolean,
         Range,
+        Like,
         Equal,
         NotEqual,
         GreaterThan,

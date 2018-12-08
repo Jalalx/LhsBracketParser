@@ -90,6 +90,7 @@ namespace LhsBracketParser
                 case TokenType.LessThan:
                 case TokenType.LessThanOrEqual:
                 case TokenType.Range:
+                case TokenType.Like:
                 case TokenType.And:
                 case TokenType.Or:
                     return true;
@@ -107,7 +108,8 @@ namespace LhsBracketParser
         {
             return token.Type == TokenType.Equal || token.Type == TokenType.NotEqual ||
                 token.Type == TokenType.LessThan || token.Type == TokenType.LessThanOrEqual ||
-                token.Type == TokenType.GreaterThan || token.Type == TokenType.GreaterThanOrEqual || token.Type == TokenType.Range;
+                token.Type == TokenType.GreaterThan || token.Type == TokenType.GreaterThanOrEqual ||
+                token.Type == TokenType.Range || token.Type == TokenType.Like;
         }
     }
 }

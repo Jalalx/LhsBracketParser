@@ -1,36 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LhsBracketParser
 {
     public abstract class EvaluatorBase : IEvaluator
     {
         private readonly IParser _parser;
-        private readonly IDataConverter _dataConverter;
 
-        protected EvaluatorBase(IParser parser, IDataConverter dataConverter)
+        protected EvaluatorBase(IParser parser)
         {
-            if (parser == null)
-                throw new ArgumentNullException(nameof(parser));
-
-            if (dataConverter == null)
-                throw new ArgumentNullException(nameof(dataConverter));
-
-            _parser = parser;
-            _dataConverter = dataConverter;
+            _parser = parser ?? throw new ArgumentNullException(nameof(parser));
         }
 
-        public EvaluatorBase() : this(new PostfixParser(), new DefaultDataConverter())
+        public EvaluatorBase() : this(new PostfixParser())
         {
         }
-
-        public EvaluatorBase(IDataConverter dataConverter) : this(new PostfixParser(), dataConverter)
-        {
-        }
-
+        
         public object Evaluate(string query)
         {
             var stack = new Stack<object>();
@@ -106,6 +91,10 @@ namespace LhsBracketParser
                             case TokenType.Range:
                                 stack.Push(Range(fieldName, operand2 as Token));
                                 break;
+
+                            case TokenType.Like:
+                                stack.Push(Like(fieldName, operand2 as Token));
+                                break;
                         }
                     }
                 }
@@ -118,6 +107,8 @@ namespace LhsBracketParser
 
             return stack.Pop();
         }
+
+        protected abstract object Like(string fieldName, Token token);
 
         protected abstract object Range(string fieldName, Token token);
 

@@ -2,13 +2,13 @@
 
 This is a simple parser for LHS Bracket syntax.
 
-[![Build status](https://ci.appveyor.com/api/projects/status/ep3y2xobn3wcmoc9/branch/master?svg=true)](https://ci.appveyor.com/project/Jalalx/LhsBracketParser/branch/master)
+[![Build status](https://ci.appveyor.com/api/projects/status/ep3y2xobn3wcmoc9/branch/master?svg=true)](https://ci.appveyor.com/project/Jalalx/LhsParser/branch/master)
 [![CodeFactor](https://www.codefactor.io/repository/github/jalalx/lhsbracketparser/badge)](https://www.codefactor.io/repository/github/jalalx/lhsbracketparser)
 ### Install from Nuget:
 
 Install [LhsBracketParser Package](https://www.nuget.org/packages/LhsBracketParser/) by running this command in Package Manager Console:
 
-    Install-Package LhsBracketParser -Version 1.0.1
+    Install-Package LhsBracketParser -Version 1.0.3
 
 #### Why is this created at first place?
 
@@ -41,6 +41,7 @@ In your application, get filter from query string and apply it to your repositor
 | Operator 	| Bracket Notation 	|
 |:--------:	|:----------------:	|
 |    N/A   	|      [range]      |
+|    N/A   	|      [like]       |
 |     =    	|       [eq]       	|
 |    !=    	|       [ne]       	|
 |     >    	|       [gt]       	|

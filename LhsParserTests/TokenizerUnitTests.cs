@@ -25,6 +25,7 @@ namespace LhsBracketParserTests
         [InlineData("isAdmin[eq]false", "isAdmin", "[eq]", TokenType.Equal, "false", TokenType.Boolean)]
         [InlineData("count[eq]18", "count", "[eq]", TokenType.Equal, "18", TokenType.Number)]
         [InlineData("count[range]18", "count", "[range]", TokenType.Range, "18", TokenType.Number)]
+        [InlineData("subject[like]\"%hello%\"", "subject", "[like]", TokenType.Like, "\"%hello%\"", TokenType.String)]
         [InlineData("price[eq]2500.00", "price", "[eq]", TokenType.Equal, "2500.00", TokenType.Number)]
         [InlineData("createDate[eq]\"yr,-1\"", "createDate", "[eq]", TokenType.Equal, "\"yr,-1\"", TokenType.String)]
         [InlineData("createDate[eq]2018", "createDate", "[eq]", TokenType.Equal, "2018", TokenType.Number)]

@@ -19,6 +19,7 @@ namespace LhsBracketParser
             {  TokenType.LessThan, 10 },
             {  TokenType.LessThanOrEqual, 10 },
             {  TokenType.Range, 10 },
+            {  TokenType.Like, 10 },
 
             {  TokenType.And, 9 },
             {  TokenType.Or, 8 },
