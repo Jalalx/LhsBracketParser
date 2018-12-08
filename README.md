@@ -40,6 +40,7 @@ In your application, get filter from query string and apply it to your repositor
 
 | Operator 	| Bracket Notation 	|
 |:--------:	|:----------------:	|
+|    N/A   	|      [range]      |
 |     =    	|       [eq]       	|
 |    !=    	|       [ne]       	|
 |     >    	|       [gt]       	|

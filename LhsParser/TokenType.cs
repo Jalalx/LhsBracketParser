@@ -8,6 +8,7 @@
         Date,
         String,
         Boolean,
+        Range,
         Equal,
         NotEqual,
         GreaterThan,

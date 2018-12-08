@@ -50,7 +50,6 @@
     <Compile Include="PostfixParser.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="InvalidSytaxException.cs" />
-    <Compile Include="OperatorType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Token.cs" />
     <Compile Include="TokenExtensions.cs" />

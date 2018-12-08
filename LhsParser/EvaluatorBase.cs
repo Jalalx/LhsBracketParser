@@ -102,6 +102,10 @@ namespace LhsBracketParser
                             case TokenType.GreaterThanOrEqual:
                                 stack.Push(GreaterThanOrEqual(fieldName, operand2 as Token));
                                 break;
+
+                            case TokenType.Range:
+                                stack.Push(Range(fieldName, operand2 as Token));
+                                break;
                         }
                     }
                 }
@@ -115,17 +119,19 @@ namespace LhsBracketParser
             return stack.Pop();
         }
 
-        protected abstract object Equal(string fieldName, Token constant);
+        protected abstract object Range(string fieldName, Token token);
 
-        protected abstract object NotEqual(string fieldName, Token constant);
+        protected abstract object Equal(string fieldName, Token token);
 
-        protected abstract object LessThan(string fieldName, Token constant);
+        protected abstract object NotEqual(string fieldName, Token token);
 
-        protected abstract object LessThanOrEqual(string fieldName, Token constant);
+        protected abstract object LessThan(string fieldName, Token token);
 
-        protected abstract object GreaterThan(string fieldName, Token constant);
+        protected abstract object LessThanOrEqual(string fieldName, Token token);
 
-        protected abstract object GreaterThanOrEqual(string fieldName, Token constant);
+        protected abstract object GreaterThan(string fieldName, Token token);
+
+        protected abstract object GreaterThanOrEqual(string fieldName, Token token);
 
         protected abstract object And(object leftExpression, object rightExpression);
 

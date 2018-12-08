@@ -135,6 +135,10 @@ namespace LhsBracketParser
                     CurrentToken = new Token(tokenStr, TokenType.GreaterThanOrEqual);
                     break;
 
+                case "[range]":
+                    CurrentToken = new Token(tokenStr, TokenType.Range);
+                    break;
+
                 default:
                     throw new InvalidSytaxException($"Invalid char '{CurrentChar}' at index {CurrentIndex}");
             }
