@@ -9,5 +9,15 @@ namespace LhsBracketParser
         {
             return constant.GetParsedValue(dataType);
         }
+
+        public object GetLowerRange(Type dataType, Token token)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object GetUpperRange(Type dataType, Token token)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

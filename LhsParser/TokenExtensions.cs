@@ -50,7 +50,7 @@ namespace LhsBracketParser
             }
             else if (dataType == typeof(string))
             {
-                return value;
+                return value.Trim('"');
             }
             else
             {
