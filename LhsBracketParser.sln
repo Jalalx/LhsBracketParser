@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LhsBracketParser.LinqProvid
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LhsBracketParser.LinqProviderTests", "LhsBracketParser.LinqProviderTests\LhsBracketParser.LinqProviderTests.csproj", "{0632B950-9731-4DF9-93AB-F5035A60CC1F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LhsBracketParser.LinqProviderIntegrationTests", "LhsBracketParser.LinqProviderIntegrationTests\LhsBracketParser.LinqProviderIntegrationTests.csproj", "{712B90E2-BA89-44DB-A582-6258E4F5E40D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{0632B950-9731-4DF9-93AB-F5035A60CC1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0632B950-9731-4DF9-93AB-F5035A60CC1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0632B950-9731-4DF9-93AB-F5035A60CC1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{712B90E2-BA89-44DB-A582-6258E4F5E40D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{712B90E2-BA89-44DB-A582-6258E4F5E40D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{712B90E2-BA89-44DB-A582-6258E4F5E40D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{712B90E2-BA89-44DB-A582-6258E4F5E40D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

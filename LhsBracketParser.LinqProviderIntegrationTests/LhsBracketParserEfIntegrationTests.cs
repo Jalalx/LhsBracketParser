@@ -1,36 +1,28 @@
 ﻿using LhsBracketParser.LinqProvider;
-using System;
-using System.Collections.Generic;
+using LhsBracketParser.LinqProviderIntegrationTests.Internals;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
-namespace LhsBracketParser.LinqProviderTests
+namespace LhsBracketParser.LinqProviderIntegrationTests
 {
-    public class LinqExpressionEvaluatorTests
+    public class LhsBracketParserEfIntegrationTests : IClassFixture<PeopleDbContextFixture>
     {
-        private static Person[] GetSamplePeople()
+        public LhsBracketParserEfIntegrationTests(PeopleDbContextFixture peopleDbContextFixture)
         {
-            return new[]
-            {
-                new Person { FullName = "Will Smith", Age = 50 },
-                new Person { FullName = "John King", Age = 30 },
-                new Person { FullName = "Leo Messi", Age = 33 },
-                new Person { FullName = "Mark Jackson", Age = 45 }
-            };
+            PeopleDbContextFixture = peopleDbContextFixture;
         }
+
+        public PeopleDbContextFixture PeopleDbContextFixture { get; }
         
+
         [Fact]
         public void Evaluate_EqualOperatorOnInMemoryCollection_ReturnsExpectedResult()
         {
-            var data = GetSamplePeople();
             var evaluator = new LinqExpressionEvaluator<Person>();
 
             var predicate = evaluator.Evaluate("Age[eq]45");
 
-            var filteredData = data.Where(predicate).ToArray();
+            var filteredData = PeopleDbContextFixture.DbContext.People.Where(predicate).ToArray();
 
             Assert.Single(filteredData);
             Assert.Equal(45, filteredData[0].Age);
@@ -40,12 +32,11 @@ namespace LhsBracketParser.LinqProviderTests
         [Fact]
         public void Evaluate_LessThanOperatorOnInMemoryCollection_ReturnsExpectedResult()
         {
-            var data = GetSamplePeople();
             var evaluator = new LinqExpressionEvaluator<Person>();
 
             var predicate = evaluator.Evaluate("Age[lt]45");
 
-            var filteredData = data.Where(predicate).ToArray();
+            var filteredData = PeopleDbContextFixture.DbContext.People.Where(predicate).OrderBy(x => x.Age).ToArray();
 
             Assert.Equal(2, filteredData.Length);
 
@@ -59,12 +50,11 @@ namespace LhsBracketParser.LinqProviderTests
         [Fact]
         public void Evaluate_LessThanOrEqualOperatorOnInMemoryCollection_ReturnsExpectedResult()
         {
-            var data = GetSamplePeople();
             var evaluator = new LinqExpressionEvaluator<Person>();
 
             var predicate = evaluator.Evaluate("Age[lte]45");
 
-            var filteredData = data.Where(predicate).ToArray();
+            var filteredData = PeopleDbContextFixture.DbContext.People.Where(predicate).OrderBy(x => x.Age).ToArray();
 
             Assert.Equal(3, filteredData.Length);
 
@@ -81,12 +71,11 @@ namespace LhsBracketParser.LinqProviderTests
         [Fact]
         public void Evaluate_GreaterThanOperatorOnInMemoryCollection_ReturnsExpectedResult()
         {
-            var data = GetSamplePeople();
             var evaluator = new LinqExpressionEvaluator<Person>();
 
             var predicate = evaluator.Evaluate("Age[gt]45");
 
-            var filteredData = data.Where(predicate).ToArray();
+            var filteredData = PeopleDbContextFixture.DbContext.People.Where(predicate).ToArray();
 
             Assert.Single(filteredData);
 
@@ -97,12 +86,11 @@ namespace LhsBracketParser.LinqProviderTests
         [Fact]
         public void Evaluate_GreaterThanOrEqualOperatorOnInMemoryCollection_ReturnsExpectedResult()
         {
-            var data = GetSamplePeople();
             var evaluator = new LinqExpressionEvaluator<Person>();
 
             var predicate = evaluator.Evaluate("Age[gte]45");
 
-            var filteredData = data.Where(predicate).ToArray();
+            var filteredData = PeopleDbContextFixture.DbContext.People.Where(predicate).OrderByDescending(x => x.Age).ToArray();
 
             Assert.Equal(2, filteredData.Length);
 
@@ -116,24 +104,16 @@ namespace LhsBracketParser.LinqProviderTests
         [Fact]
         public void Evaluate_LikeOperatorOnInMemoryCollection_ReturnsExpectedResult()
         {
-            var data = GetSamplePeople();
             var evaluator = new LinqExpressionEvaluator<Person>();
 
             var predicate = evaluator.Evaluate("FullName[like]\"Will\"");
 
-            var filteredData = data.Where(predicate).ToArray();
+            var filteredData = PeopleDbContextFixture.DbContext.People.Where(predicate).ToArray();
 
             Assert.Single(filteredData);
 
             Assert.Equal(50, filteredData[0].Age);
             Assert.Equal("Will Smith", filteredData[0].FullName);
         }
-    }
-
-    public class Person
-    {
-        public string FullName { get; set; }
-
-        public int Age { get; set; }
     }
 }

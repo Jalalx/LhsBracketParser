@@ -2,16 +2,16 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: Xunit.AssemblyTrait("Trait", "Unit Tests")]
-
+[assembly: Xunit.AssemblyTrait("Trait", "Integration Tests")]
+[assembly: Xunit.CollectionBehavior(DisableTestParallelization = true)]
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("LhsBracketParser.LinqProviderTests")]
+[assembly: AssemblyTitle("LhsBracketParser.LinqProviderIntegrationTests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("LhsBracketParser.LinqProviderTests")]
+[assembly: AssemblyProduct("LhsBracketParser.LinqProviderIntegrationTests")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -22,7 +22,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("0632b950-9731-4df9-93ab-f5035a60cc1f")]
+[assembly: Guid("712b90e2-ba89-44db-a582-6258e4f5e40d")]
 
 // Version information for an assembly consists of the following four values:
 //

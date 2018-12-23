@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>LhsBracketParser.LinqProvider</id>
+    <version>0.0.1</version>
+    <title>LhsBracketParser For Linq</title>
+    <authors>jalalx</authors>
+    <owners>jalalx</owners>
+    <projectUrl>https://github.com/jalalx/LhsBracketParser</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Linq Provider for basic LHS Bracket Parser</description>
+    <copyright>Copyright ©  2018</copyright>
+    <dependencies />
+  </metadata>
+</package>
